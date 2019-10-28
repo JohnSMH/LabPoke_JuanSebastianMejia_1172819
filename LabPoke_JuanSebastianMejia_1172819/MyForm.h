@@ -1,4 +1,7 @@
 #pragma once
+#include "Pokemon.h"
+#include "PokePrueba.h"
+
 
 namespace LabPokeJuanSebastianMejia1172819 {
 
@@ -105,26 +108,77 @@ namespace LabPokeJuanSebastianMejia1172819 {
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		StreamReader^ streamReader = gcnew StreamReader("pokes.txt");
 		String^ texto = streamReader->ReadToEnd();
-		int nums[10];
+		array<PokePrueba^>^ cols = gcnew array<PokePrueba^>(10);
 		String^ llenado;
+		int its=1;
+		int i=0;
+		int gen;
+		int num;
+		int j;
+		String^nombre;
+
 
 		while (texto->Length>0)
 		{
-			
-			int j = 0;
-
-			while (texto[j]!=',')
+			switch (its)
 			{
-				llenado += texto[j];
-				j++;
+			case 1:
+			j = 0;
+			llenado = "";
+				while (texto[j] != ',')
+				{
+					llenado += texto[j];
+					j++;
+				}
+				nombre = llenado;
+				
+				its++;
+				texto = texto->Remove(0, j + 1);
+				break;
+			case 2:
+				llenado = "";
+				 j = 0;
+
+				while (texto[j] != ',')
+				{
+					llenado += texto[j];
+					j++;
+				}
+
+				gen = Convert::ToInt32(llenado);
+
+				texto = texto->Remove(0, j + 1);
+				its++;
+				break;
+			case 3:
+				 j = 0;
+				llenado = "";
+
+				while (texto[j] != ',')
+				{
+					llenado += texto[j];
+					j++;
+				}
+
+				num = Convert::ToInt32(llenado);
+
+				texto = texto->Remove(0, j + 1);
+				cols[i] = gcnew PokePrueba(nombre,gen,num);
+				
+				its = 1;
+				i++;
+				break;
+			default:
+				break;
 			}
 			
-			llenado += "\n";
-			
-			texto=texto->Remove(0,j+1);
 		}
-		label1->Text = llenado+" "+texto;
+		
+		for (int i = 0; i < 2; i++)
+		{
+			label1->Text += cols[i]->Nombre+" "+cols[i]->natnum+" "+cols[i]->gennum+"\n";
 
+		}
 
 		
 	}
