@@ -96,7 +96,22 @@ namespace LabPokeJuanSebastianMejia1172819 {
 		int nums[10];
 		String^ llenado;
 
-		label1->Text = texto;
+		while (texto->Length>0)
+		{
+			
+			int j = 0;
+
+			while (texto[j]!=',')
+			{
+				llenado += texto[j];
+				j++;
+			}
+			
+			llenado += "\n";
+			
+			texto=texto->Remove(0,j+1);
+		}
+		label1->Text = llenado+" "+texto;
 
 
 		
