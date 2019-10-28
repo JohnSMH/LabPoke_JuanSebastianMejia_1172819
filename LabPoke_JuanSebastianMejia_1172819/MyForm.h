@@ -13,6 +13,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 	using namespace System::Drawing;
 	using namespace std;
 	using namespace System::IO;
+	using namespace System::Collections::Generic;
 	
 
 	/// <summary>
@@ -108,7 +109,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		StreamReader^ streamReader = gcnew StreamReader("pokes.txt");
 		String^ texto = streamReader->ReadToEnd();
-		array<PokePrueba^>^ cols = gcnew array<PokePrueba^>(10);
+		//array<PokePrueba^>^ cols = gcnew array<PokePrueba^>(10);
 		String^ llenado;
 		int its=1;
 		int i=0;
@@ -116,7 +117,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 		int num;
 		int j;
 		String^nombre;
-
+		List<PokePrueba^>^ cols2 = gcnew List<PokePrueba^>();
 
 		while (texto->Length>0)
 		{
@@ -163,8 +164,9 @@ namespace LabPokeJuanSebastianMejia1172819 {
 				num = Convert::ToInt32(llenado);
 
 				texto = texto->Remove(0, j + 1);
-				cols[i] = gcnew PokePrueba(nombre,gen,num);
-				
+				//cols[i] = gcnew PokePrueba(nombre,gen,num);
+				cols2->Add(gcnew PokePrueba(nombre, gen, num));
+
 				its = 1;
 				i++;
 				break;
@@ -174,11 +176,16 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			
 		}
 		
-		for (int i = 0; i < 2; i++)
+		for each (PokePrueba^var in cols2)
 		{
-			label1->Text += cols[i]->Nombre+" "+cols[i]->natnum+" "+cols[i]->gennum+"\n";
-
+			label1->Text += var->Nombre + " " + var->natnum + " " + var->gennum + "\n";
 		}
+
+		//for (int i = 0; i < 2; i++)
+		//{
+		//	label1->Text += cols[i]->Nombre+" "+cols[i]->natnum+" "+cols[i]->gennum+"\n";
+
+		//}
 
 		
 	}

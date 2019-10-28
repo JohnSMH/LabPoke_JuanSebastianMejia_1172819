@@ -1,1 +1,1 @@
-Pikachu,1,25,Raichu,1,26,
+Pikachu,1,25,Raichu,1,26,Charizard,1,6,Blastoise,1,9,Beedrill,1,15,Pidgeot,1,18,Ninetails,1,38,Poliwrath,1,62,Alakazam,1,65,Machamp,1,68,
