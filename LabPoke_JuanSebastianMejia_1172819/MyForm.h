@@ -39,6 +39,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 		}
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 	protected:
 
 	private:
@@ -56,6 +57,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -76,11 +78,21 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			this->label1->Size = System::Drawing::Size(0, 13);
 			this->label1->TabIndex = 1;
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(145, 17);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(42, 13);
+			this->label2->TabIndex = 2;
+			this->label2->Text = L"Testing";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm";
