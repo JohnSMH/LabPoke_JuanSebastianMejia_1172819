@@ -69,7 +69,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Ordenar";
+			this->button1->Text = L"Obtener Pokemones";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::Button1_Click);
 			// 
@@ -86,15 +86,15 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(145, 17);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(42, 13);
+			this->label2->Size = System::Drawing::Size(295, 13);
 			this->label2->TabIndex = 2;
-			this->label2->Text = L"Testing";
+			this->label2->Text = L"Funciona con la estructura \"Nombre,National,Generacion,...\"";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(457, 261);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
