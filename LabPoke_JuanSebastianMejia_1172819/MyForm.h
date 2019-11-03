@@ -14,6 +14,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 	using namespace std;
 	using namespace System::IO;
 	using namespace System::Collections::Generic;
+	using namespace System::Diagnostics;
 	
 
 	/// <summary>
@@ -44,6 +45,8 @@ namespace LabPokeJuanSebastianMejia1172819 {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
 	protected:
 
 	private:
@@ -62,6 +65,8 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -77,7 +82,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 51);
+			this->label1->Location = System::Drawing::Point(12, 61);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(0, 13);
 			this->label1->TabIndex = 1;
@@ -85,17 +90,39 @@ namespace LabPokeJuanSebastianMejia1172819 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(145, 17);
+			this->label2->Location = System::Drawing::Point(12, 38);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(295, 13);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"Funciona con la estructura \"Nombre,National,Generacion,...\"";
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(93, 12);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(112, 23);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"Ordenar por numero";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::Button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(211, 12);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(133, 23);
+			this->button3->TabIndex = 4;
+			this->button3->Text = L"Ordenar por Generacion";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::Button3_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(457, 261);
+			this->ClientSize = System::Drawing::Size(358, 261);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
@@ -106,6 +133,75 @@ namespace LabPokeJuanSebastianMejia1172819 {
 
 		}
 #pragma endregion
+
+		List<PokePrueba^>^ cols2 = gcnew List<PokePrueba^>();
+
+	public: System::Void QuickSort() {
+		label1->Text = "";
+		array< PokePrueba^ >^ test = gcnew array< PokePrueba^ >(cols2->Count);
+		test = cols2->ToArray();
+
+
+	}
+
+	public: System::Void OrdenarBubble() {
+		label1->Text = "";
+		array< PokePrueba^ >^ test = gcnew array< PokePrueba^ >(cols2->Count);
+
+		test=cols2->ToArray();
+
+		PokePrueba^temp = gcnew PokePrueba();
+		int i, j;
+		for (i = 0; i < test->Length - 1; i++)
+
+			  
+			for (j = 0; j < test->Length - i - 1; j++) {
+				if (test[j]->natnum > test[j + 1]->natnum) {
+					temp = test[j];
+					test[j] = test[j + 1];
+					test[j + 1] = temp;
+				}
+			}
+
+		for (int i = 0; i < test->Length; i++)
+		{
+			label1->Text += test[i]->Nombre + " " + test[i]->natnum + " " + test[i]->gennum + "\n";
+		}
+	}
+
+			public: System::Void OrdenarBubbleg() {
+				label1->Text = "";
+				array< PokePrueba^ >^ test = gcnew array< PokePrueba^ >(cols2->Count);
+
+				test = cols2->ToArray();
+
+				PokePrueba^ temp = gcnew PokePrueba();
+				int i, j;
+				for (i = 0; i < test->Length - 1; i++)
+
+
+					for (j = 0; j < test->Length - i - 1; j++) {
+						if (test[j]->gennum == test[j + 1]->gennum) {
+							if (test[j]->natnum > test[j + 1]->natnum) {
+								temp = test[j];
+								test[j] = test[j + 1];
+								test[j + 1] = temp;
+							}
+							
+						}
+						else if (test[j]->gennum > test[j + 1]->gennum) {
+							temp = test[j];
+							test[j] = test[j + 1];
+							test[j + 1] = temp;
+						}
+					}
+
+				for (int i = 0; i < test->Length; i++)
+				{
+					label1->Text += test[i]->Nombre + " " + test[i]->natnum + " " + test[i]->gennum + "\n";
+				}
+			}
+
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		StreamReader^ streamReader = gcnew StreamReader("pokes.txt");
 		String^ texto = streamReader->ReadToEnd();
@@ -117,7 +213,7 @@ namespace LabPokeJuanSebastianMejia1172819 {
 		int num;
 		int j;
 		String^nombre;
-		List<PokePrueba^>^ cols2 = gcnew List<PokePrueba^>();
+		
 
 		while (texto->Length>0)
 		{
@@ -189,5 +285,25 @@ namespace LabPokeJuanSebastianMejia1172819 {
 
 		
 	}
-	};
+	private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Stopwatch^stpwtch = gcnew Stopwatch();
+		stpwtch->Start();
+		OrdenarBubble();
+		stpwtch->Stop();
+
+		TimeSpan ts = stpwtch->Elapsed;
+		
+		MessageBox::Show("Tiempo: " + ts);
+	}
+private: System::Void Button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	Stopwatch^ stpwtch = gcnew Stopwatch();
+	stpwtch->Start();
+	OrdenarBubbleg();
+	stpwtch->Stop();
+
+	TimeSpan ts = stpwtch->Elapsed;
+
+	MessageBox::Show("Tiempo: " + ts);
+}
+};
 }
